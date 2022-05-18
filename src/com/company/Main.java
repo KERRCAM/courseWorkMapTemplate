@@ -37,7 +37,8 @@ public class Main {
 
         System.out.println(map[0].length);
         //30 vertical 200 horizontal
-
+        // 6000 index positions per map
+        //24000 characters or so unfilled
 
         for (int i = 0; i < 30; i++) {
             System.out.println("");
