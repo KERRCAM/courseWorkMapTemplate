@@ -69,7 +69,7 @@ public class Main {
                           {"#",".",".",".",".","/",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","/","/",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","#","#","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","#",".",".",".",".",".",".",".",".",".",".",".",".","00","",".",".",".",".",".","/",".",".",".",".",".",".",".",".",".","00","",".",".",".",".",".",".",".",".",".","/",".",".",".",".",".",".",".","00","",".",".",".",".",".",".",".",".","/",".",".",".",".",".",".",".","/",".",".",".",".","00","",".",".",".",".",".",".","/",".",".",".",".",".",".","00","",".",".",".",".",".",".",".","/",".",".",".",".",".",".",".",".",".",".",".",".","/",".",".",".",".",".",".",".",".","00","",".",".",".",".",".",".","#"},
                           {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}};
 
-        System.out.println(map[0].length);
+        //System.out.println(map[0].length);
         //30 vertical 200 horizontal
         // 6000 index positions per map
         //24000 characters or so unfilled
@@ -90,16 +90,20 @@ public class Main {
                     System.out.print(ANSI_PURPLE + map[i][j] + ANSI_RESET);
                 }if (map[i][j].length() == 2) {
                     System.out.print(ANSI_RED + map[i][j] + ANSI_RESET);
+                }if (map[i][j] == "^" || map[i][j] == "|" || map[i][j] == "*" || map[i][j] == "[" ||map[i][j] == "]" || map[i][j] == "I" || map[i][j] == "=") {
+                    System.out.print(ANSI_CYAN + map[i][j] + ANSI_RESET);
                 }
             }
         }
 
+        /*
         for (int i = 0; i < 30; i++) {
             System.out.println("");
             for (int j = 0; j < 200; j++) {
                 System.out.print(map[i][j]);
             }
         }
+        */
 
         System.out.println();
         System.out.println();
@@ -122,12 +126,38 @@ public class Main {
         //13 vertical 38 horizontal
         //494 index positions
 
+        /*
         for (int i = 0; i < 13; i++) {
             System.out.println("");
             for (int j = 0; j < 38; j++) {
                 System.out.print(tutorialMap1[i][j]);
             }
         }
+        */
+
+        for (int i = 0; i < 13; i++) {
+            System.out.println("");
+            for (int j = 0; j < 38; j++) {
+                if  (tutorialMap1[i][j] == "~") {
+                    System.out.print(ANSI_BLUE + tutorialMap1[i][j] + ANSI_RESET);
+                }if (tutorialMap1[i][j] == ".") {
+                    System.out.print(ANSI_GREEN + tutorialMap1[i][j] + ANSI_RESET);
+                }if (tutorialMap1[i][j] == "#") {
+                    System.out.print(ANSI_YELLOW + tutorialMap1[i][j] + ANSI_RESET);
+                }if (tutorialMap1[i][j] == "/") {
+                    System.out.print(ANSI_BLACK + tutorialMap1[i][j] + ANSI_RESET);
+                }if (tutorialMap1[i][j] == "+") {
+                    System.out.print(ANSI_PURPLE + tutorialMap1[i][j] + ANSI_RESET);
+                }if (tutorialMap1[i][j].length() == 2) {
+                    System.out.print(ANSI_RED + tutorialMap1[i][j] + ANSI_RESET);
+                }if (tutorialMap1[i][j] == "^" || tutorialMap1[i][j] == "|" || tutorialMap1[i][j] == "*" || tutorialMap1[i][j] == "[" || tutorialMap1[i][j] == "]" || tutorialMap1[i][j] == "I" || tutorialMap1[i][j] == "=") {
+                    System.out.print(ANSI_CYAN + tutorialMap1[i][j] + ANSI_RESET);
+                }
+            }
+        }
+
+        System.out.println();
+        System.out.println();
 
         String tutorialMap2 [][] =     {{"#","#","#","#","#","#","#","#","#","#","#","#","#","~","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
                                         {"#",".",".",".",".",".",".",".",".",".",".","#","~","~","~","~","~","~","~","~","~","#",".",".",".",".",".","/",".",".",".",".",".",".","|","|","|","#"},
@@ -143,15 +173,28 @@ public class Main {
                                         {"#",".",".",".",".",".","#","~","~","~","~","~","~","~","~","#",".",".",".",".",".",".",".",".",".",".",".","/",".",".",".",".",".",".",".",".",".","#"},
                                         {"#","#","#","#","#","#","#","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}};
 
-
-
-
         for (int i = 0; i < 13; i++) {
             System.out.println("");
             for (int j = 0; j < 38; j++) {
-                System.out.print(ANSI_YELLOW + tutorialMap2[i][j] + ANSI_RESET);
+                if  (tutorialMap2[i][j] == "~") {
+                    System.out.print(ANSI_BLUE + tutorialMap2[i][j] + ANSI_RESET);
+                }if (tutorialMap2[i][j] == ".") {
+                    System.out.print(ANSI_GREEN + tutorialMap2[i][j] + ANSI_RESET);
+                }if (tutorialMap2[i][j] == "#") {
+                    System.out.print(ANSI_YELLOW + tutorialMap2[i][j] + ANSI_RESET);
+                }if (tutorialMap2[i][j] == "/") {
+                    System.out.print(ANSI_BLACK + tutorialMap2[i][j] + ANSI_RESET);
+                }if (tutorialMap2[i][j] == "+") {
+                    System.out.print(ANSI_PURPLE + tutorialMap2[i][j] + ANSI_RESET);
+                }if (tutorialMap2[i][j].length() == 2) {
+                    System.out.print(ANSI_RED + tutorialMap1[i][j] + ANSI_RESET);
+                }if (tutorialMap2[i][j] == "^" || tutorialMap2[i][j] == "|" || tutorialMap2[i][j] == "*" || tutorialMap2[i][j] == "[" || tutorialMap2[i][j] == "]" || tutorialMap2[i][j] == "I" || tutorialMap2[i][j] == "=") {
+                    System.out.print(ANSI_CYAN + tutorialMap2[i][j] + ANSI_RESET);
+                }
             }
         }
+
+
 
 
     }
