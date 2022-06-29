@@ -191,13 +191,13 @@ public class Main {
         }
 
 
-    printMap(map);
+    printMap(map, 30, 200);
 
 
 
     }
 
-    public static void printMap(String mapName[][]) {
+    public static void printMap(String mapName[][], int row, int column) {
 
         String ANSI_RESET = "\u001B[0m";
         String ANSI_YELLOW = "\u001B[33m";
@@ -217,9 +217,9 @@ public class Main {
         String ANSI_BK_CYAN = "\u001B[46m";
         String ANSI_BK_WHITE = "\u001B[47m";
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < row; i++) {
             System.out.println("");
-            for (int j = 0; j < 200; j++) {
+            for (int j = 0; j < column; j++) {
                 if (mapName[i][j] == "~") {
                     System.out.print(ANSI_BLUE + mapName[i][j] + ANSI_RESET);
                 }
