@@ -166,10 +166,10 @@ public class Main {
                     System.out.print(ANSI_BLACK + mapName[i][j] + ANSI_RESET);
                 }
                 if (mapName[i][j] == "+") {
-                    System.out.print(ANSI_PURPLE + mapName[i][j] + ANSI_RESET);
+                    System.out.print(ANSI_RED + mapName[i][j] + ANSI_RESET);
                 }
                 if (mapName[i][j].length() == 2) {
-                    System.out.print(ANSI_RED + mapName[i][j] + ANSI_RESET);
+                    System.out.print(ANSI_PURPLE + mapName[i][j] + ANSI_RESET);
                 }
                 if (mapName[i][j] == "^" || mapName[i][j] == "|" || mapName[i][j] == "*" || mapName[i][j] == "[" || mapName[i][j] == "]" || mapName[i][j] == "I" || mapName[i][j] == "=") {
                     System.out.print(ANSI_CYAN + mapName[i][j] + ANSI_RESET);
