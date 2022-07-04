@@ -7,7 +7,7 @@ public class Main {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         //BLACK	\u001B[30m	BLACK_BACKGROUND	\u001B[40m
         //RED	\u001B[31m	RED_BACKGROUND	\u001B[41m
@@ -117,16 +117,18 @@ public class Main {
     printMap(map, 30, 200);
     System.out.println();
     System.out.println();
+    //Thread.sleep(3000);
     printMap(tutorialMap1, 13, 38);
     System.out.println();
     System.out.println();
+    //Thread.sleep(3000);
     printMap(tutorialMap2, 13, 38);
 
     }
 
 
 
-    public static void printMap(String mapName[][], int row, int column) {
+    public static void printMap(String mapName[][], int row, int column) throws InterruptedException {
 
         String ANSI_RESET = "\u001B[0m";
         String ANSI_YELLOW = "\u001B[33m";
