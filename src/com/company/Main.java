@@ -223,12 +223,45 @@ public class Main {
     printMap(gMap1, 30, 200);
     System.out.println();
     System.out.println();
-    //Thread.sleep(3000);
+    Thread.sleep(3000);
     printMap(tMap1, 13, 38);
     System.out.println();
     System.out.println();
-    //Thread.sleep(3000);
+    Thread.sleep(3000);
     printMap(tMap2, 13, 38);
+    System.out.println();
+    System.out.println();
+    Thread.sleep(3000);
+    printMap(tMap3, 13, 38);
+    System.out.println();
+    System.out.println();
+    Thread.sleep(3000);
+    printMap(tMap4, 13, 38);
+    System.out.println();
+    System.out.println();
+    Thread.sleep(3000);
+    printMap(tMap5, 13, 38);
+    System.out.println();
+    System.out.println();
+    Thread.sleep(3000);
+    printMap(tMap6, 13, 38);
+    System.out.println();
+    System.out.println();
+    Thread.sleep(3000);
+    printMap(tMap7, 13, 38);
+    System.out.println();
+    System.out.println();
+    Thread.sleep(3000);
+    printMap(tMap8, 13, 38);
+    System.out.println();
+    System.out.println();
+    Thread.sleep(3000);
+    printMap(tMap9, 13, 38);
+    System.out.println();
+    System.out.println();
+    Thread.sleep(3000);
+    printMap(tMap2, 13, 38);
+
 
     }
 
