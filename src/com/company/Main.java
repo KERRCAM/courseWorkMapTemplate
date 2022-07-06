@@ -1,11 +1,15 @@
 package com.company;
 import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
 
 
 
 public class Main {
 
-
+    public static File gMap1File = new File("gMap1.txt");
+    public static File tMap1File= new File("tMap1.txt");
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -108,7 +112,126 @@ public class Main {
                                         {"#",".",".",".",".",".","#","~","~","~","~","~","~","~","~","#",".",".",".",".",".",".",".",".",".",".",".","/",".",".",".",".",".",".",".",".",".","#"},
                                         {"#","#","#","#","#","#","#","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}};
 
-        String tMap2 [][] =            {{"#","#","#","#","#","#","#","#","#","#","#","#","#","~","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}, //PL starts by picking their capitol and FA is given capitol as well
+
+        mapToFile("gMap1.txt",gMap1, 30, 200);
+
+    printMap(gMap1, 30, 200);
+    System.out.println();
+    System.out.println();
+    Thread.sleep(3000);
+    printMap(tMap1, 13, 38);
+    System.out.println();
+    System.out.println();
+    Thread.sleep(3000);
+    //printMap(tMap2, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap3, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap4, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap5, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap6, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap7, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap8, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap9, 13, 38);
+
+
+
+
+    }
+
+
+
+
+    public static void printMap(String mapName[][], int row, int column) throws InterruptedException {
+
+        String ANSI_RESET = "\u001B[0m";
+        String ANSI_YELLOW = "\u001B[33m";
+        String ANSI_BLACK = "\u001B[30m";
+        String ANSI_RED = "\u001B[31m";
+        String ANSI_GREEN = "\u001B[32m";
+        String ANSI_BLUE = "\u001B[34m";
+        String ANSI_PURPLE = "\u001B[35m";
+        String ANSI_CYAN = "\u001B[36m";
+        String ANSI_WHITE = "\u001B[37m";
+        String ANSI_BK_YELLOW = "\u001B[43m";
+        String ANSI_BK_BLACK = "\u001B[40m";
+        String ANSI_BK_RED = "\u001B[41m";
+        String ANSI_BK_GREEN = "\u001B[42m";
+        String ANSI_BK_BLUE = "\u001B[44m";
+        String ANSI_BK_PURPLE = "\u001B[45m";
+        String ANSI_BK_CYAN = "\u001B[46m";
+        String ANSI_BK_WHITE = "\u001B[47m";
+
+        for (int i = 0; i < row; i++) {
+            System.out.println("");
+            for (int j = 0; j < column; j++) {
+                if (mapName[i][j] == "~") {
+                    System.out.print(ANSI_BLUE + mapName[i][j] + ANSI_RESET);
+                }
+                if (mapName[i][j] == ".") {
+                    System.out.print(ANSI_GREEN + mapName[i][j] + ANSI_RESET);
+                }
+                if (mapName[i][j] == "#") {
+                    System.out.print(ANSI_YELLOW + mapName[i][j] + ANSI_RESET);
+                }
+                if (mapName[i][j] == "/") {
+                    System.out.print(ANSI_BLACK + mapName[i][j] + ANSI_RESET);
+                }
+                if (mapName[i][j] == "+") {
+                    System.out.print(ANSI_RED + mapName[i][j] + ANSI_RESET);
+                }
+                if (mapName[i][j].length() == 2) {
+                    System.out.print(ANSI_PURPLE + mapName[i][j] + ANSI_RESET);
+                }
+                if (mapName[i][j] == "^" || mapName[i][j] == "|" || mapName[i][j] == "*" || mapName[i][j] == "[" || mapName[i][j] == "]" || mapName[i][j] == "I" || mapName[i][j] == "=") {
+                    System.out.print(ANSI_CYAN + mapName[i][j] + ANSI_RESET);
+                }
+            }
+        }
+    }
+
+
+
+    public static void mapToFile(String fileName, String mapName[][], int row, int column) {
+        try {
+            FileWriter myWriter = new FileWriter(fileName, false); //Would need to change for each map, change name to be variable
+            //myWriter.write( + "\n"); // writes to file
+            for (int i = 0; i < row; i++){
+                for (int j = 0; j < column; j++) {
+                    myWriter.write( mapName[i][j] + ",");
+                }
+                myWriter.write("\n");
+            }
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+}
+/*
+
+String tMap2 [][] =            {{"#","#","#","#","#","#","#","#","#","#","#","#","#","~","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}, //PL starts by picking their capitol and FA is given capitol as well
                                         {"#",".",".",".",".",".",".",".",".",".",".","#","~","~","~","~","~","~","~","~","~","#",".",".",".",".",".","/",".",".",".",".",".",".","|","|","|","#"},
                                         {"#",".",".","01","",".","I",".",".",".",".","#","~","~","~","~","~","~","~","~","#","^","^","03","",".",".","/",".",".",".","05","",".",".",".",".","#"},
                                         {"#",".",".","PL","",".","=","=","=",".","#","~","~","~","~","~","~","~","~","~","#","^","^","NC","",".",".","/","|",".",".","NC","","|","|","|",".","#"},
@@ -164,99 +287,6 @@ public class Main {
                                         {"#",".",".",".",".",".","#","~","~","~","~","~","~","~","~","#",".",".",".",".",".",".",".",".",".",".",".","/",".",".",".",".",".",".",".",".",".","#"},
                                         {"#","#","#","#","#","#","#","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}};
 
-
-
-    printMap(gMap1, 30, 200);
-    System.out.println();
-    System.out.println();
-    Thread.sleep(3000);
-    printMap(tMap1, 13, 38);
-    System.out.println();
-    System.out.println();
-    Thread.sleep(3000);
-    printMap(tMap2, 13, 38);
-    System.out.println();
-    System.out.println();
-    Thread.sleep(3000);
-    printMap(tMap3, 13, 38);
-    System.out.println();
-    System.out.println();
-    Thread.sleep(3000);
-    printMap(tMap4, 13, 38);
-    System.out.println();
-    System.out.println();
-    Thread.sleep(3000);
-    printMap(tMap5, 13, 38);
-    System.out.println();
-    System.out.println();
-    Thread.sleep(3000);
-    //printMap(tMap6, 13, 38);
-    System.out.println();
-    System.out.println();
-    Thread.sleep(3000);
-    //printMap(tMap7, 13, 38);
-    System.out.println();
-    System.out.println();
-    Thread.sleep(3000);
-    //printMap(tMap8, 13, 38);
-    System.out.println();
-    System.out.println();
-    Thread.sleep(3000);
-    //printMap(tMap9, 13, 38);
-
-    }
-
-
-
-    public static void printMap(String mapName[][], int row, int column) throws InterruptedException {
-
-        String ANSI_RESET = "\u001B[0m";
-        String ANSI_YELLOW = "\u001B[33m";
-        String ANSI_BLACK = "\u001B[30m";
-        String ANSI_RED = "\u001B[31m";
-        String ANSI_GREEN = "\u001B[32m";
-        String ANSI_BLUE = "\u001B[34m";
-        String ANSI_PURPLE = "\u001B[35m";
-        String ANSI_CYAN = "\u001B[36m";
-        String ANSI_WHITE = "\u001B[37m";
-        String ANSI_BK_YELLOW = "\u001B[43m";
-        String ANSI_BK_BLACK = "\u001B[40m";
-        String ANSI_BK_RED = "\u001B[41m";
-        String ANSI_BK_GREEN = "\u001B[42m";
-        String ANSI_BK_BLUE = "\u001B[44m";
-        String ANSI_BK_PURPLE = "\u001B[45m";
-        String ANSI_BK_CYAN = "\u001B[46m";
-        String ANSI_BK_WHITE = "\u001B[47m";
-
-        for (int i = 0; i < row; i++) {
-            System.out.println("");
-            for (int j = 0; j < column; j++) {
-                if (mapName[i][j] == "~") {
-                    System.out.print(ANSI_BLUE + mapName[i][j] + ANSI_RESET);
-                }
-                if (mapName[i][j] == ".") {
-                    System.out.print(ANSI_GREEN + mapName[i][j] + ANSI_RESET);
-                }
-                if (mapName[i][j] == "#") {
-                    System.out.print(ANSI_YELLOW + mapName[i][j] + ANSI_RESET);
-                }
-                if (mapName[i][j] == "/") {
-                    System.out.print(ANSI_BLACK + mapName[i][j] + ANSI_RESET);
-                }
-                if (mapName[i][j] == "+") {
-                    System.out.print(ANSI_RED + mapName[i][j] + ANSI_RESET);
-                }
-                if (mapName[i][j].length() == 2) {
-                    System.out.print(ANSI_PURPLE + mapName[i][j] + ANSI_RESET);
-                }
-                if (mapName[i][j] == "^" || mapName[i][j] == "|" || mapName[i][j] == "*" || mapName[i][j] == "[" || mapName[i][j] == "]" || mapName[i][j] == "I" || mapName[i][j] == "=") {
-                    System.out.print(ANSI_CYAN + mapName[i][j] + ANSI_RESET);
-                }
-            }
-        }
-    }
-}
-/*
 String tMap6 [][] =            {{"#","#","#","#","#","#","#","#","#","#","#","#","#","~","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}, //PL troop gain
                                         {"#",".",".",".",".",".",".",".",".",".",".","#","~","~","~","~","~","~","~","~","~","#",".",".",".",".",".","/",".",".",".",".",".",".","|","|","|","#"},
                                         {"#",".",".","01","",".","I",".",".",".",".","#","~","~","~","~","~","~","~","~","#","^","^","03","",".",".","/",".",".",".","05","",".",".",".",".","#"},
