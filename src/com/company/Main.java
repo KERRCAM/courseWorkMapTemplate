@@ -3,51 +3,19 @@ import java.io.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-
+import java.util.Arrays;
+import java.util.List;
 
 
 public class Main {
 
     public static File gMap1File = new File("gMap1.txt");
     public static File tMap1File= new File("tMap1.txt");
+    public static String gMapInPlay[][] = new String[30][200];
 
     public static void main(String[] args) throws InterruptedException {
 
-        //System.out.println(map[0].length);
-        //30 vertical 200 horizontal
-        // 6000 index positions per map
-        //24000 characters or so unfilled
-        //49 regions
 
-        /*
-        for (int i = 0; i < 30; i++) {
-            System.out.println("");
-            for (int j = 0; j < 200; j++) {
-                System.out.print(map[i][j]);
-            }
-        }
-        */
-
-        //13 vertical 38 horizontal
-        //494 index positions
-
-        /*
-        for (int i = 0; i < 13; i++) {
-            System.out.println("");
-            for (int j = 0; j < 38; j++) {
-                System.out.print(tutorialMap1[i][j]);
-            }
-        }
-        */
-
-        //BLACK	\u001B[30m	BLACK_BACKGROUND	\u001B[40m
-        //RED	\u001B[31m	RED_BACKGROUND	\u001B[41m
-        //GREEN	\u001B[32m	GREEN_BACKGROUND	\u001B[42m
-        //YELLOW	\u001B[33m	YELLOW_BACKGROUND	\u001B[43m
-        //BLUE	\u001B[34m	BLUE_BACKGROUND	\u001B[44m
-        //PURPLE	\u001B[35m	PURPLE_BACKGROUND	\u001B[45m
-        //CYAN	\u001B[36m	CYAN_BACKGROUND	\u001B[46m
-        //WHITE	\u001B[37m	WHITE_BACKGROUND	\u001B[47m
 
         String ANSI_RESET = "\u001B[0m";
         String ANSI_YELLOW = "\u001B[33m";
@@ -98,6 +66,8 @@ public class Main {
                           {"#",".",".",".",".","/",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","/","/",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","#","#","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","#",".",".",".",".",".",".",".",".",".",".",".",".","00","",".",".",".",".",".","/",".",".",".",".",".",".",".",".",".","00","",".",".",".",".",".",".",".",".",".","/",".",".",".",".",".",".",".","00","",".",".",".",".",".",".",".",".","/",".",".",".",".",".",".",".","/",".",".",".",".","00","",".",".",".",".",".",".","/",".",".",".",".",".",".","00","",".",".",".",".",".",".",".","/",".",".",".",".",".",".",".",".",".",".",".",".","/",".",".",".",".",".",".",".",".","00","",".",".",".",".",".",".","#"},
                           {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}};
 
+
+
         String tMap1 [][] =            {{"#","#","#","#","#","#","#","#","#","#","#","#","#","~","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}, //starting view of map before capitols are picked and game starts
                                         {"#",".",".",".",".",".",".",".",".",".",".","#","~","~","~","~","~","~","~","~","~","#",".",".",".",".",".","/",".",".",".",".",".",".","|","|","|","#"},
                                         {"#",".",".","01","",".","I",".",".",".",".","#","~","~","~","~","~","~","~","~","#","^","^","03","",".",".","/",".",".",".","05","",".",".",".",".","#"},
@@ -113,52 +83,13 @@ public class Main {
                                         {"#","#","#","#","#","#","#","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}};
 
     //mapToFile("gMap1.txt",gMap1, 30, 200);
-    mapToFile("tMap1.txt",tMap1, 13, 38);
+    //mapToFile("tMap1.txt",tMap1, 13, 38);
 
-    printMap(gMap1, 30, 200);
-    System.out.println();
-    System.out.println();
-    Thread.sleep(3000);
-    printMap(tMap1, 13, 38);
-    System.out.println();
-    System.out.println();
-    Thread.sleep(3000);
-    //printMap(tMap2, 13, 38);
-    //System.out.println();
-    //System.out.println();
-    //Thread.sleep(3000);
-    //printMap(tMap3, 13, 38);
-    //System.out.println();
-    //System.out.println();
-    //Thread.sleep(3000);
-    //printMap(tMap4, 13, 38);
-    //System.out.println();
-    //System.out.println();
-    //Thread.sleep(3000);
-    //printMap(tMap5, 13, 38);
-    //System.out.println();
-    //System.out.println();
-    //Thread.sleep(3000);
-    //printMap(tMap6, 13, 38);
-    //System.out.println();
-    //System.out.println();
-    //Thread.sleep(3000);
-    //printMap(tMap7, 13, 38);
-    //System.out.println();
-    //System.out.println();
-    //Thread.sleep(3000);
-    //printMap(tMap8, 13, 38);
-    //System.out.println();
-    //System.out.println();
-    //Thread.sleep(3000);
-    //printMap(tMap9, 13, 38);
-
-
+    fileToMap("gMap1.txt");
+    printMap(gMapInPlay, 30, 200);
 
 
     }
-
-
 
 
     public static void printMap(String mapName[][], int row, int column) throws InterruptedException {
@@ -228,7 +159,35 @@ public class Main {
             e.printStackTrace();
         }
     }
+
+
+
+    public static void fileToMap(String fileName) { // very broken maybe even grabbing columns not rows and printing x 200 also too far in getting index 1 not 0 first
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            int i = 0;
+            while ((line = br.readLine()) != null) {
+                List<String> splitLine = Arrays.asList(line.split(","));
+                for (int j = 0; j < 200; j++) {
+                    gMapInPlay[i][j] = splitLine.get(i);
+                    System.out.print(splitLine.get(i));
+                }
+                System.out.println();
+                i++;
+            }
+        } catch (Exception e) {
+            System.out.println("error");
+            System.out.println(e);
+        }
+    }
 }
+
+
+
+
+
+
+
 /*
 
 String tMap2 [][] =            {{"#","#","#","#","#","#","#","#","#","#","#","#","#","~","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}, //PL starts by picking their capitol and FA is given capitol as well
@@ -342,4 +301,81 @@ String tMap6 [][] =            {{"#","#","#","#","#","#","#","#","#","#","#","#"
                                         {"#",".",".","04","",".","#","+","+","+","+","+","+","+","+","+","#",".",".",".","10","",".",".",".",".",".","/",".","*","*",".","03","","*",".",".","#"},
                                         {"#",".",".",".",".",".","#","~","~","~","~","~","~","~","~","#",".",".",".",".",".",".",".",".",".",".",".","/",".",".",".",".",".",".",".",".",".","#"},
                                         {"#","#","#","#","#","#","#","~","~","~","~","~","~","~","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}};
- */
+
+    //printMap(gMap1, 30, 200);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap1, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap2, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap3, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap4, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap5, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap6, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap7, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap8, 13, 38);
+    //System.out.println();
+    //System.out.println();
+    //Thread.sleep(3000);
+    //printMap(tMap9, 13, 38);
+
+
+    //System.out.println(map[0].length);
+        //30 vertical 200 horizontal
+        // 6000 index positions per map
+        //24000 characters or so unfilled
+        //49 regions
+
+        /*
+        for (int i = 0; i < 30; i++) {
+            System.out.println("");
+            for (int j = 0; j < 200; j++) {
+                System.out.print(map[i][j]);
+            }
+        }
+        */
+
+        //13 vertical 38 horizontal
+        //494 index positions
+
+                /*
+                for (int i = 0; i < 13; i++) {
+                    System.out.println("");
+                    for (int j = 0; j < 38; j++) {
+                        System.out.print(tutorialMap1[i][j]);
+                    }
+                }
+                */
+
+        //BLACK	\u001B[30m	BLACK_BACKGROUND	\u001B[40m
+        //RED	\u001B[31m	RED_BACKGROUND	\u001B[41m
+        //GREEN	\u001B[32m	GREEN_BACKGROUND	\u001B[42m
+        //YELLOW	\u001B[33m	YELLOW_BACKGROUND	\u001B[43m
+        //BLUE	\u001B[34m	BLUE_BACKGROUND	\u001B[44m
+        //PURPLE	\u001B[35m	PURPLE_BACKGROUND	\u001B[45m
+        //CYAN	\u001B[36m	CYAN_BACKGROUND	\u001B[46m
+        //WHITE	\u001B[37m	WHITE_BACKGROUND	\u001B[47m
+
+
+
