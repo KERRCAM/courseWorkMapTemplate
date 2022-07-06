@@ -170,9 +170,9 @@ public class Main {
                 List<String> splitLine = Arrays.asList(line.split(","));
                 for (int j = 0; j < 200; j++) {
                     gMapInPlay[i][j] = splitLine.get(i);
-                    System.out.print(splitLine.get(i));
+                    //System.out.print(splitLine.get(i)); //test print
                 }
-                System.out.println();
+                //System.out.println(); //test print
                 i++;
             }
         } catch (Exception e) {
