@@ -87,7 +87,7 @@ public class Main {
 
     fileToMap("gMap1.txt");
     printMap(gMapInPlay, 30, 200);
-
+    printMap(gMap1, 30, 200);
 
     }
 
@@ -115,25 +115,25 @@ public class Main {
         for (int i = 0; i < row; i++) {
             System.out.println("");
             for (int j = 0; j < column; j++) {
-                if (mapName[i][j] == "~") {
+                if (mapName[i][j].equals("~")) {
                     System.out.print(ANSI_BLUE + mapName[i][j] + ANSI_RESET);
                 }
-                if (mapName[i][j] == ".") {
+                if (mapName[i][j].equals(".")) {
                     System.out.print(ANSI_GREEN + mapName[i][j] + ANSI_RESET);
                 }
-                if (mapName[i][j] == "#") {
+                if (mapName[i][j].equals("#")) {
                     System.out.print(ANSI_YELLOW + mapName[i][j] + ANSI_RESET);
                 }
-                if (mapName[i][j] == "/") {
+                if (mapName[i][j].equals("/")) {
                     System.out.print(ANSI_BLACK + mapName[i][j] + ANSI_RESET);
                 }
-                if (mapName[i][j] == "+") {
+                if (mapName[i][j].equals("+")) {
                     System.out.print(ANSI_RED + mapName[i][j] + ANSI_RESET);
                 }
                 if (mapName[i][j].length() == 2) {
                     System.out.print(ANSI_PURPLE + mapName[i][j] + ANSI_RESET);
                 }
-                if (mapName[i][j] == "^" || mapName[i][j] == "|" || mapName[i][j] == "*" || mapName[i][j] == "[" || mapName[i][j] == "]" || mapName[i][j] == "I" || mapName[i][j] == "=") {
+                if (mapName[i][j].equals("^") || mapName[i][j].equals("|") || mapName[i][j].equals("*") || mapName[i][j].equals("[") || mapName[i][j].equals("]") || mapName[i][j].equals("I") || mapName[i][j].equals("=")) {
                     System.out.print(ANSI_CYAN + mapName[i][j] + ANSI_RESET);
                 }
             }
@@ -169,7 +169,7 @@ public class Main {
             while ((line = br.readLine()) != null) {
                 List<String> splitLine = Arrays.asList(line.split(","));
                 for (int j = 0; j < 200; j++) {
-                    gMapInPlay[i][j] = splitLine.get(i);
+                    gMapInPlay[i][j] = splitLine.get(j);
                     //System.out.print(splitLine.get(i)); //test print
                 }
                 //System.out.println(); //test print
